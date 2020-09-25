@@ -1,5 +1,5 @@
 {
-	"name": "live-server",
+	"name": "@gerardbalaoro/live-server",
 	"version": "0.1.0",
 	"description": "An HTTP server with live reloading",
 	"main": "index.js",
@@ -18,6 +18,9 @@
 		"email": "gmbalaoro@outlook.com"
 	},
 	"license": "MIT",
+	"publishConfig": { 
+		"registry": "https://npm.pkg.github.com/" 
+	},
 	"prettier": {
 		"printWidth": 120,
 		"tabWidth": 4,
