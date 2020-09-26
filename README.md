@@ -1,5 +1,5 @@
 # ⚡ Live Server
-An HTTP server with live reloading powered by express
+An HTTP server with live reloading powered by [Express](https://expressjs.com)
 
 ## Usage
 
@@ -58,7 +58,7 @@ const server = new LiveServer({
 
 ### Properties
 
-- **`$app`** - [Express](https://expressjs.com/) application instance
+- **`$app`** - [Express](https://expressjs.com) application instance
 - **`$server`** - Active HTTP server
 - **`$watcher`** - File system watcher
 - **`$socket`** - WebSocket
