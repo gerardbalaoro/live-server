@@ -88,12 +88,15 @@ server.on('started', (url) => {
 
 ### Watcher events
 
-You can listen to any watcher events through the `$watcher` property.
+You can listen to any watcher events through the `$watcher` property
+when the server has started.
 Read [chokidar watcher's documentation](https://www.npmjs.com/package/chokidar)
 to see a list of events.
 
 ```js
-server.$watcher.on('change', (file) => {
-    console.log(file + ' has been updated')
+server.on('started', () => {
+    server.$watcher.on('change', (file) => {
+        console.log(file + ' has been updated')
+    })
 })
 ```

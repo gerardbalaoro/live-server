@@ -15,8 +15,11 @@ const server = new LiveServer({
 	],
 })
 
-server.on('started', (server, url) => {
+server.on('started', (url) => {
 	console.log(`Live Server: ${url}`)
+	server.$watcher.on('all', (event, path) => {
+		console.log(`- ${event}: ${path}`)
+	})
 })
 
 server.start()

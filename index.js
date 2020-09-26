@@ -25,9 +25,6 @@ class LiveServer {
 		this.$terminator = null
 		this.$watcher = null
 		this.$server = null
-		
-		this.$prepareServer()
-		this.$prepareWatcher()
 	}
 
 	on(event, listener) {
@@ -65,6 +62,9 @@ class LiveServer {
 
 	start() {
 		this.$event.emit('starting')
+		this.$prepareServer()
+		this.$prepareWatcher()
+
 		portfinder.getPort({ port: this.$options.port || 3000 }, (err, port) => {
 			if (err) throw err
 			this.$server = this.$app.listen(port, '0.0.0.0', () => {

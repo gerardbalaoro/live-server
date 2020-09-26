@@ -35,12 +35,12 @@ module.exports = (root, payload) => {
 			})
 			.on('stream', stream => {
 				if (payloadTarget) {
-					payload = Buffer.concat([fs.readFileSync(path.join(__dirname, 'payload.html')), Buffer.from(payload || '')])
-					res.setHeader('Content-Length', payload.length + res.getHeader('Content-Length'))
+					const content = Buffer.concat([fs.readFileSync(path.join(__dirname, 'payload.html')), Buffer.from(payload || '')])
+					res.setHeader('Content-Length', content.length + res.getHeader('Content-Length'))
 					const originalPipe = stream.pipe
 					stream.pipe = resp => {
 						originalPipe
-							.call(stream, es.replace(new RegExp(payloadTarget, 'i'), payload + payloadTarget))
+							.call(stream, es.replace(new RegExp(payloadTarget, 'i'), content + payloadTarget))
 							.pipe(resp)
 					}
 				}
