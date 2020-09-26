@@ -1,6 +1,6 @@
 {
 	"name": "@gerardbalaoro/live-server",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "An HTTP server with live reloading",
 	"main": "index.js",
 	"scripts": {

@@ -25,6 +25,9 @@ class LiveServer {
 		this.$terminator = null
 		this.$watcher = null
 		this.$server = null
+		
+		this.$prepareServer()
+		this.$prepareWatcher()
 	}
 
 	on(event, listener) {
@@ -62,16 +65,13 @@ class LiveServer {
 
 	start() {
 		this.$event.emit('starting')
-		this.$prepareServer()
-		this.$prepareWatcher()
-
 		portfinder.getPort({ port: this.$options.port || 3000 }, (err, port) => {
 			if (err) throw err
 			this.$server = this.$app.listen(port, '0.0.0.0', () => {
 				const { address, port } = this.$server.address()
 				const url = `http://${address == '0.0.0.0' ? '127.0.0.1' : address}:${port}`
 				this.$terminator = createHttpTerminator({ server: this.$server })
-				this.$event.emit('started', this.$server, url)
+				this.$event.emit('started', url)
 			})
 		})
 	}

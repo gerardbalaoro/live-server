@@ -8,7 +8,7 @@ const LiveServer = require('live-server')
 
 const server = new LiveServer({
     root: 'public',
-    port: 8080
+    port: 8080 // Will use a random port if in use
 })
 
 server.start()
@@ -53,5 +53,47 @@ that will be appended after the live reloading script.
 const server = new LiveServer({
     root: 'public',
     payload: '<!-- This is a custom payload -->',
+})
+```
+
+### Properties
+
+- **`$app`** - [Express](https://expressjs.com/) application instance
+- **`$server`** - Active HTTP server
+- **`$watcher`** - File system watcher
+- **`$socket`** - WebSocket
+
+### Methods
+
+- **`start`** - Start the server
+- **`shutdown`** - Shutdown the server
+- **`on(event, listener)`** - Listen to events
+
+### Events
+
+- **`starting`** - Before server start
+- **`started`** - On server start
+- **`mounted`** - On directory mounted
+- **`shutdown`** - On server shutdown
+
+### Getting the server URL
+
+You can retrieve the URL by listening to the `started` event.
+
+```js
+server.on('started', (url) => {
+    console.log('Listening on ' + url)
+})
+```
+
+### Watcher events
+
+You can listen to any watcher events through the `$watcher` property.
+Read [chokidar watcher's documentation](https://www.npmjs.com/package/chokidar)
+to see a list of events.
+
+```js
+server.$watcher.on('change', (file) => {
+    console.log(file + ' has been updated')
 })
 ```
