@@ -35,7 +35,7 @@ module.exports = (root, payload) => {
 			})
 			.on('stream', stream => {
 				if (payloadTarget) {
-					const content = Buffer.concat([fs.readFileSync(path.join(__dirname, 'payload.html')), Buffer.from(payload || '')])
+					const content = Buffer.concat([fs.readFileSync(path.join(__dirname, 'data', 'payload.html')), Buffer.from(payload || '')])
 					res.setHeader('Content-Length', content.length + res.getHeader('Content-Length'))
 					const originalPipe = stream.pipe
 					stream.pipe = resp => {
