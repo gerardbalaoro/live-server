@@ -4,8 +4,7 @@
 	"description": "An HTTP server with live reloading",
 	"main": "index.js",
 	"scripts": {
-		"lint": "eslint *.js **/*.js",
-		"lint:fix": "eslint --fix *.js **/*.js",
+		"lint": "eslint --fix *.js **/*.js",
 		"test": "mocha test --exit && npm run lint"
 	},
 	"keywords": [
@@ -18,14 +17,14 @@
 		"email": "gmbalaoro@outlook.com"
 	},
 	"license": "MIT",
-	"publishConfig": { 
-		"registry": "https://npm.pkg.github.com/" 
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
 	},
 	"prettier": {
 		"printWidth": 120,
 		"tabWidth": 4,
 		"useTabs": true,
-		"semi": false,
+		"semi": true,
 		"singleQuote": true,
 		"trailingComma": "es5",
 		"bracketSpacing": true

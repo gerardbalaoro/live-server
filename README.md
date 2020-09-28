@@ -56,12 +56,25 @@ const server = new LiveServer({
 })
 ```
 
+### Custom HTTP/S module
+
+```js
+const server = new LiveServer({
+    root: 'public',
+    httpModule: require('https').createServer({
+        key: '/etc/ssl/key.pem',
+        cert: '/etc/ssl/cert.pem
+    })
+})
+```
+
 ### Properties
 
 - **`$app`** - [Express](https://expressjs.com) application instance
-- **`$server`** - Active HTTP server
-- **`$watcher`** - File system watcher
-- **`$socket`** - WebSocket
+- **`$socket`** - WebSocket instance
+- **`server`** - Active HTTP server
+- **`watcher`** - File system watcher
+- **`options`** - LiveServer options
 
 ### Methods
 
@@ -95,7 +108,7 @@ to see a list of events.
 
 ```js
 server.on('started', () => {
-    server.$watcher.on('change', (file) => {
+    server.watcher.on('change', (file) => {
         console.log(file + ' has been updated')
     })
 })
