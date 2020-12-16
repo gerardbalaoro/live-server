@@ -36,7 +36,8 @@
 		"express-ws": "^4.0.0",
 		"http-terminator": "^2.0.3",
 		"portfinder": "^1.0.28",
-		"send": "^0.17.1"
+		"send": "^0.17.1",
+		"ws": "^7.3.1"
 	},
 	"devDependencies": {
 		"eslint": "^7.9.0",

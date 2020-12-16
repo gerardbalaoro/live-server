@@ -5,10 +5,15 @@
 			var protocol = 'ws' + (window.location.protocol === 'http:' ? '' : 's');
 			var socket = new WebSocket(protocol + '://' + window.location.host + window.location.pathname);
 			socket.onmessage = function(msg) {
-				console.debug('💬 Received message: ' + msg.data);
 				if (msg.data == 'reload') window.location.reload();
 			};
-			console.log('⚡ Live reload enabled');
+			socket.onopen = function() {
+				console.log('⚡ Live reload enabled');
+			};
+			socket.onerror = function() {
+				console.log('❌ Live reload disabled');
+			};
+
 		})();
 	}
 </script>
