@@ -4,7 +4,6 @@ const { createHttpTerminator } = require('http-terminator');
 const portfinder = require('portfinder');
 const chokidar = require('chokidar');
 const WebSocket = require('ws');
-const ip = require('ip');
 const staticServer = require('./static');
 
 const serverOptions = {
