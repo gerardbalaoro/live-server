@@ -50,6 +50,8 @@ class LiveServer {
 			this.$app.use(route, staticServer(directory, this.options.payload));
 			this.$event.emit('mounted', route, directory);
 		}
+
+		this.$event.emit('serverready', this.$app);
 	}
 
 	$prepareWatcher() {
