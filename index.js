@@ -4,6 +4,7 @@ const { createHttpTerminator } = require('http-terminator');
 const portfinder = require('portfinder');
 const chokidar = require('chokidar');
 const WebSocket = require('ws');
+const ip = require('ip');
 const staticServer = require('./static');
 
 const serverOptions = {
@@ -84,7 +85,7 @@ class LiveServer {
 			this.$socket = new WebSocket.Server({ server: httpServer });
 			this.server = httpServer.listen(port, '0.0.0.0', () => {
 				const { address, port } = this.server.address();
-				const url = `http://${address == '0.0.0.0' ? '127.0.0.1' : address}:${port}`;
+				const url = `http://${address == '0.0.0.0' ? 'localhost' : address}:${port}`;
 				this.$terminator = createHttpTerminator({ server: this.server });
 				this.$event.emit('started', url);
 			});
